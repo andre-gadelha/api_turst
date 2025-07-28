@@ -5,6 +5,7 @@ import com.teamTregamos.api_TurSt.model.atividade.AtividadeRepository;
 import com.teamTregamos.api_TurSt.model.atividade.DadosAtividade;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,5 +21,12 @@ public class AtividadeController {
         repository.save(new Atividade(atividade));
         //System.out.println(atividade);
 
+    }
+
+    @GetMapping
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    public ResponseEntity getAllAtividades(){
+        var allAtividades = repository.findAll();
+        return ResponseEntity.ok(allAtividades);
     }
 }
