@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.teamTregamos</groupId>
-	<artifactId>api_TurSt</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>api_TurSt</name>
+	<artifactId>api-turst</artifactId>
+	<version>v0_1</version>
+	<name>api-turst</name>
 	<description>Project for Spring Boot para Back End para sistema de Tutismo Sustentável</description>
 	<url/>
 	<licenses>
@@ -86,6 +86,9 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<image>
+						<name>adrsys/${project.artifactId}:${project.version}</name>
+					</image>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
@@ -93,6 +96,13 @@
 						</exclude>
 					</excludes>
 				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
