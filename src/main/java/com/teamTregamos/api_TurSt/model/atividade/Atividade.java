@@ -10,7 +10,6 @@ import lombok.*;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class Atividade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +24,8 @@ public class Atividade {
     private String duracao;
     private String categoria;
     private String localizacao;
+    private Integer ativo;
+
 
     public Integer getId() {
         return id;
@@ -39,13 +40,14 @@ public class Atividade {
     public String getDuracao() {return duracao;}
     public String getCategoria() {return categoria;}
     public String getLocalizacao() {return localizacao;}
+    public Integer getAtivo() {return ativo;}
 
     // Construtor padrão (sem argumentos) - ADICIONE ESTE!
     public Atividade() {
         // Opcional: inicializar campos com valores padrão se necessário
     }
 
-    public Atividade(DadosAtividade atividade) {
+    public Atividade(DadosCadastroAtividade atividade) {
         this.nome = atividade.nome();
         this.descricao = atividade.descricao();
         this.contato = atividade.contato();
@@ -56,5 +58,14 @@ public class Atividade {
         this.duracao = atividade.duracao();
         this.categoria = atividade.categoria();
         this.localizacao = atividade.localizacao();
+    }
+
+    public void editarAtividade(DadosEdicaoAtividade atividade) {
+        if (atividade.descricao() != null) {
+            this.descricao = atividade.descricao();
+        }
+        if (atividade.ativo() != null) {
+            this.ativo = atividade.ativo();
+        }
     }
 }

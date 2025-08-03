@@ -1,9 +1,8 @@
 package com.teamTregamos.api_TurSt.model.atividade;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
-public record DadosAtividade(
+public record DadosCadastroAtividade(
         @NotBlank
         String nome,
         String descricao,
