@@ -27,16 +27,20 @@ public class AutenticationController {
 
     @PostMapping
     public ResponseEntity auth(@RequestBody @Valid DadosAutenticacao autenticacao) {
+        try{
+            //Gera um token de autenticação usando o AuthenticationManager com os dados fornecidos pelo usuário
+            var token = new UsernamePasswordAuthenticationToken(autenticacao.usuario(), autenticacao.senha());
+            //O método authenticate do AuthenticationManager tenta autenticar o usuário com base no token fornecido
+            var authentication = authenticatorManager.authenticate(token);
 
-        //Gera um token de autenticação usando o AuthenticationManager com os dados fornecidos pelo usuário
-        var token = new UsernamePasswordAuthenticationToken(autenticacao.usuario(), autenticacao.senha());
-        //O método authenticate do AuthenticationManager tenta autenticar o usuário com base no token fornecido
-        var authentication = authenticatorManager.authenticate(token);
+            var tokenJWT = tokenService.gerarToken((Usuario) authentication.getPrincipal());
 
-        var tokenJWT = tokenService.gerarToken((Usuario) authentication.getPrincipal());
-
-        // Exemplo de retorno de sucesso passando o usuário autenticado:
-        return ResponseEntity.ok(new DadosToken(tokenJWT));
+            // Exemplo de retorno de sucesso passando o usuário autenticado:
+            return ResponseEntity.ok(new DadosToken(tokenJWT));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
 }
