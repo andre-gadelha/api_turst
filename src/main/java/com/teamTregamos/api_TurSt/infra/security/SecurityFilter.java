@@ -1,4 +1,4 @@
-package com.teamTregamos.api_TurSt.model.infra.security;
+package com.teamTregamos.api_TurSt.infra.security;
 
 import com.teamTregamos.api_TurSt.model.usuario.UsuarioRepository;
 import jakarta.servlet.FilterChain;
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.util.Collections;
 
 //Classe de filtro de segurança que intercepta cada requisição HTTP
 @Component

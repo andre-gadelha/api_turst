@@ -1,4 +1,4 @@
-package com.teamTregamos.api_TurSt.model.infra.security;
+package com.teamTregamos.api_TurSt.infra.security;
 
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.teamTregamos.api_TurSt.model.usuario.Usuario;

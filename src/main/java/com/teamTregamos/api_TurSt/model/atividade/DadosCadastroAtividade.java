@@ -1,6 +1,10 @@
 package com.teamTregamos.api_TurSt.model.atividade;
 
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 
 public record DadosCadastroAtividade(
         @NotBlank
@@ -14,4 +18,5 @@ public record DadosCadastroAtividade(
         String duracao,
         String categoria,
         String localizacao) {
+
 }

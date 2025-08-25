@@ -1,9 +1,6 @@
 package com.teamTregamos.api_TurSt.cotroller;
 
-import com.teamTregamos.api_TurSt.model.atividade.Atividade;
-import com.teamTregamos.api_TurSt.model.atividade.AtividadeRepository;
-import com.teamTregamos.api_TurSt.model.atividade.DadosCadastroAtividade;
-import com.teamTregamos.api_TurSt.model.atividade.DadosEdicaoAtividade;
+import com.teamTregamos.api_TurSt.model.atividade.*;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,9 +38,10 @@ public class AtividadeController {
     @GetMapping("/{id}")
     public ResponseEntity detalhar(@PathVariable Integer id){
         //busca a atividade no banco de dados pelo ID fornecido
+        //var atividade = repository.findById(id);
         var atividade = repository.getReferenceById(id);
         //retorna a atividade encontrada como resposta HTTP 200 (OK)
-        return ResponseEntity.ok(atividade.getNome());
+        return ResponseEntity.ok(new DadosDetalheAtividade(atividade));
     }
 
     @PutMapping
@@ -63,9 +61,11 @@ public class AtividadeController {
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity excluir(@PathVariable Integer id){
+
         //deleta a atividade do banco de dados pelo ID fornecido
-        repository.deleteById(id);
+        var atividade = repository.getReferenceById(id);
+        repository.delete(atividade);
         //retorna uma resposta HTTP 204 (No Content) indicando que a exclusão foi bem-sucedida
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok("Atividade '" + atividade.getId() + " - " + atividade.getNome() + "' excluída com sucesso!");
     }
 }
