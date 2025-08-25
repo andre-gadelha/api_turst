@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/atividade")
@@ -19,32 +20,52 @@ public class AtividadeController {
     private AtividadeRepository repository;
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody @Valid DadosCadastroAtividade atividade){
-
-        repository.save(new Atividade(atividade));
-
+    public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroAtividade requestAtividade, UriComponentsBuilder uriBuilder){
+        //cria uma nova atividade com os dados recebidos na requisição
+        var atividade = new Atividade(requestAtividade);
+        //salva a nova atividade no banco de dados
+        repository.save(atividade);
+        //constrói a URI para acessar a nova atividade criada
+        var uri = uriBuilder.path("/atividade/{id}").buildAndExpand(atividade.getId()).toUri();
+        //retorna uma resposta HTTP 201 (Created) com a URI da nova atividade no cabeçalho e o objeto atividade no corpo
+        return ResponseEntity.created(uri).body(atividade);
     }
 
     @GetMapping
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    public ResponseEntity getAllAtividades(){
+    public ResponseEntity listar(){
         var allAtividades = repository.findAll();
         return ResponseEntity.ok(allAtividades);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity detalhar(@PathVariable Integer id){
+        //busca a atividade no banco de dados pelo ID fornecido
+        var atividade = repository.getReferenceById(id);
+        //retorna a atividade encontrada como resposta HTTP 200 (OK)
+        return ResponseEntity.ok(atividade.getNome());
+    }
+
     @PutMapping
     @Transactional
-    public void editar(@RequestBody @Valid DadosEdicaoAtividade atividade){
+    public ResponseEntity editar(@RequestBody @Valid DadosEdicaoAtividade atividade){
 
+        //busca a atividade no banco de dados pelo ID fornecido
         var atividadeExistente = repository.getReferenceById(atividade.id());
-        atividadeExistente.editarAtividade(atividade);
+        var descricaoAntiga = atividadeExistente.getDescricao();
+        atividadeExistente.editarAtividade(atividade);// chama o método para editar a atividade
+
+        return ResponseEntity.ok("Atividade '" + atividadeExistente.getId() + " - " + atividadeExistente.getNome() + "' editada com sucesso!\n" +
+                        "Descrição antiga: " + descricaoAntiga + "\n" +
+                        "Nova decrição: " + atividadeExistente.getDescricao());
     }
 
     @DeleteMapping("/{id}")
     @Transactional
-    public void excluir(@PathVariable Integer id){
-
+    public ResponseEntity excluir(@PathVariable Integer id){
+        //deleta a atividade do banco de dados pelo ID fornecido
         repository.deleteById(id);
+        //retorna uma resposta HTTP 204 (No Content) indicando que a exclusão foi bem-sucedida
+        return ResponseEntity.noContent().build();
     }
-
 }

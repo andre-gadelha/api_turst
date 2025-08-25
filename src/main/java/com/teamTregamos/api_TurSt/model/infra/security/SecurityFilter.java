@@ -42,14 +42,14 @@ public class SecurityFilter extends OncePerRequestFilter {
             if(usuarioAutenticado != null) {
                 // Criar o objeto de autenticação
                 var authentication = new UsernamePasswordAuthenticationToken(
-                        usuarioAutenticado,  // principal (username)
+                        usuarioAutenticado.getUsername(),  // principal (username)
                         null,         // credentials (não precisamos da senha aqui)
                         usuarioAutenticado.getAuthorities()// authorities (permissões do usuário)
                 );
 
                 // Definir no SecurityContext para o Spring Security reconhecer
                 SecurityContextHolder.getContext().setAuthentication(authentication);
-                System.out.println("Usuário autenticado com sucesso: " + usuarioAutenticado);
+                System.out.println("Usuário autenticado com sucesso: " + usuarioAutenticado.getUsername());
             }
         }
 
