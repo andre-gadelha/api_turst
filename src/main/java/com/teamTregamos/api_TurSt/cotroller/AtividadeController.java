@@ -1,6 +1,7 @@
 package com.teamTregamos.api_TurSt.cotroller;
 
 import com.teamTregamos.api_TurSt.model.atividade.*;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RestController
 @RequestMapping("/atividade")
 @CrossOrigin(origins = "*")
+@SecurityRequirement(name = "bearer-key")
 public class AtividadeController {
 
     @Autowired
