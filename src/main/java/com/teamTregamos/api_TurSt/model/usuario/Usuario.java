@@ -33,6 +33,11 @@ public class Usuario implements UserDetails {
         );
     }
 
+    public Usuario() {
+        // Construtor padrão exigido pelo Hibernate
+    }
+
+
     @Override
     public String getPassword() {
         return senha;
