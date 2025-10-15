@@ -1,4 +1,4 @@
-package com.teamTregamos.api_TurSt.cotroller;
+package com.teamTregamos.api_TurSt.controller;
 
 import com.teamTregamos.api_TurSt.dto.DadosCadastroAtividade;
 import com.teamTregamos.api_TurSt.dto.DadosDetalheAtividade;
