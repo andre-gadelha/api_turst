@@ -1,4 +1,4 @@
-package com.teamTregamos.api_TurSt.infra.erros;
+package com.teamTregamos.api_TurSt.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;

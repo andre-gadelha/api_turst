@@ -1,4 +1,4 @@
-package com.teamTregamos.api_TurSt.infra.security;
+package com.teamTregamos.api_TurSt.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

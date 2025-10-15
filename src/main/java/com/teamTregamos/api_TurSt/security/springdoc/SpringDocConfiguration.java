@@ -1,4 +1,4 @@
-package com.teamTregamos.api_TurSt.infra.security.springdoc;
+package com.teamTregamos.api_TurSt.security.springdoc;
 
 
 import io.swagger.v3.oas.models.security.SecurityScheme;
@@ -7,6 +7,7 @@ import io.swagger.v3.oas.models.OpenAPI;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+//cla
 @Configuration
 public class SpringDocConfiguration {
 

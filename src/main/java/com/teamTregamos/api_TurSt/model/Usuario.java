@@ -1,4 +1,4 @@
-package com.teamTregamos.api_TurSt.model.usuario;
+package com.teamTregamos.api_TurSt.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,9 +1,9 @@
 package com.teamTregamos.api_TurSt.cotroller;
 
-import com.teamTregamos.api_TurSt.infra.security.DadosToken;
-import com.teamTregamos.api_TurSt.infra.security.TokenService;
-import com.teamTregamos.api_TurSt.model.usuario.DadosAutenticacao;
-import com.teamTregamos.api_TurSt.model.usuario.Usuario;
+import com.teamTregamos.api_TurSt.dto.DadosToken;
+import com.teamTregamos.api_TurSt.security.TokenService;
+import com.teamTregamos.api_TurSt.dto.DadosAutenticacao;
+import com.teamTregamos.api_TurSt.model.Usuario;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

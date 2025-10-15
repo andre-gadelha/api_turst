@@ -1,6 +1,10 @@
 package com.teamTregamos.api_TurSt.cotroller;
 
-import com.teamTregamos.api_TurSt.model.atividade.*;
+import com.teamTregamos.api_TurSt.dto.DadosCadastroAtividade;
+import com.teamTregamos.api_TurSt.dto.DadosDetalheAtividade;
+import com.teamTregamos.api_TurSt.dto.DadosEdicaoAtividade;
+import com.teamTregamos.api_TurSt.model.Atividade;
+import com.teamTregamos.api_TurSt.repository.AtividadeRepository;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;

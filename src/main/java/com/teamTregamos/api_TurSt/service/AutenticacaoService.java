@@ -1,5 +1,6 @@
-package com.teamTregamos.api_TurSt.model.usuario;
+package com.teamTregamos.api_TurSt.service;
 
+import com.teamTregamos.api_TurSt.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

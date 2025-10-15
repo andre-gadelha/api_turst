@@ -1,9 +1,6 @@
-package com.teamTregamos.api_TurSt.model.atividade;
+package com.teamTregamos.api_TurSt.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
 
 public record DadosCadastroAtividade(

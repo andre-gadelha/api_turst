@@ -1,4 +1,6 @@
-package com.teamTregamos.api_TurSt.model.atividade;
+package com.teamTregamos.api_TurSt.dto;
+
+import com.teamTregamos.api_TurSt.model.Atividade;
 
 public record DadosDetalheAtividade(
                                     Integer id,

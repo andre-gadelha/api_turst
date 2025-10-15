@@ -1,6 +1,8 @@
-package com.teamTregamos.api_TurSt.model.atividade;
+package com.teamTregamos.api_TurSt.model;
 
 
+import com.teamTregamos.api_TurSt.dto.DadosCadastroAtividade;
+import com.teamTregamos.api_TurSt.dto.DadosEdicaoAtividade;
 import jakarta.persistence.*;
 import lombok.*;
 

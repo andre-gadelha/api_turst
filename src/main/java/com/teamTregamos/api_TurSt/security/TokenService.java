@@ -1,7 +1,7 @@
-package com.teamTregamos.api_TurSt.infra.security;
+package com.teamTregamos.api_TurSt.security;
 
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.teamTregamos.api_TurSt.model.usuario.Usuario;
+import com.teamTregamos.api_TurSt.model.Usuario;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import com.auth0.jwt.JWT;

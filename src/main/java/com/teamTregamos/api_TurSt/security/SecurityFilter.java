@@ -1,6 +1,6 @@
-package com.teamTregamos.api_TurSt.infra.security;
+package com.teamTregamos.api_TurSt.security;
 
-import com.teamTregamos.api_TurSt.model.usuario.UsuarioRepository;
+import com.teamTregamos.api_TurSt.repository.UsuarioRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,7 +19,7 @@ public class SecurityFilter extends OncePerRequestFilter {
 
     //Classe responsável por validar o token JWT presente no cabeçalho Authorization das requisições HTTP
     @Autowired
-    private  TokenService tokenService;
+    private TokenService tokenService;
 
     @Autowired
     private UsuarioRepository usuarioRepository;
