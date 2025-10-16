@@ -34,6 +34,7 @@ public class SecurityConfigurations {
                         .authorizeHttpRequests(req -> {
                             req.requestMatchers("/auth").permitAll();//permite acesso sem autenticação ao endpoint /auth
                             req.requestMatchers(HttpMethod.GET,"/").permitAll();
+                            req.requestMatchers(HttpMethod.POST,"usuario").permitAll();
                             req.requestMatchers("/v3/api-docs/**", "/swagger-ui.html/**", "/swagger-ui/**").permitAll();//permite acesso sem autenticação aos endpoints do Swagger
                             req.anyRequest().authenticated();
                         })

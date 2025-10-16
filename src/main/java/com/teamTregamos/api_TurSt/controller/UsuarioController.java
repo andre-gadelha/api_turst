@@ -18,9 +18,9 @@ public class UsuarioController {
     }
 
     @GetMapping
-    @SecurityRequirement(name = "bearerAuth")//indica que o endpoint requer autenticação via token Bearer(Por padrão o Spring Security não exige autenticação para endpoints que contenham /usuario ou semelhantes, então é necessário configurar isso)
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity listar(){
-        return ResponseEntity.ok().build();
-    }
 
+        return ResponseEntity.ok("Teste");
+    }
 }
