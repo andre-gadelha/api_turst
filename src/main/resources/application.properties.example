@@ -1,0 +1,12 @@
+spring.datasource.url=jdbc:postgresql://localhost:5432/su_banco_de_dados
+spring.datasource.username=seu_usuario
+spring.datasource.password=sua_senha
+spring.jpa.hibernate.ddl-auto=update
+
+spring.application.name=api_TurSt
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.jdbc.lab.non_contextual_creation=true
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+api.security.token.secret=${API_TOKEN_SECRET:suachaveaqui} \\VARIÁVEL DE AMBIENTE PARA SEGURANÇA JWT
