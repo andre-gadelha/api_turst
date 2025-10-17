@@ -35,7 +35,7 @@ public class SecurityFilter extends OncePerRequestFilter {
             //varifica se o token JWT é válido e obtém o assunto (subject) do token
             var validaToken = tokenService.getSubject(tokenJWT); // Valida o token JWT
             //Busca o usuário associado ao token JWT no repositório de usuários
-            var usuarioAutenticado = usuarioRepository.findByUsuario(validaToken);
+            var usuarioAutenticado = usuarioRepository.findByEmail(validaToken);
 
             //Definir a autenticação no SecurityContext
             if(usuarioAutenticado != null) {

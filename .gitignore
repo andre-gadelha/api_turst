@@ -36,4 +36,5 @@ build/
 application.properties
 
 ### DOCKER ###
+docker-compose.yml
 
