@@ -22,7 +22,9 @@ public class Usuario implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String usuario;
+    private String nome;
+    private String cpfCnpj;
+    private String email;
     private String senha;
 
     //Controle de permissões
@@ -45,7 +47,7 @@ public class Usuario implements UserDetails {
 
     @Override
     public String getUsername() {
-        return usuario;
+        return nome;
     }
 
     @Override

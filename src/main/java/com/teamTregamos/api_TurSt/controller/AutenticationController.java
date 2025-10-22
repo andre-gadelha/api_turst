@@ -30,7 +30,7 @@ public class AutenticationController {
     public ResponseEntity auth(@RequestBody @Valid DadosAutenticacao autenticacao) {
         try{
             //Gera um token de autenticação usando o AuthenticationManager com os dados fornecidos pelo usuário
-            var token = new UsernamePasswordAuthenticationToken(autenticacao.usuario(), autenticacao.senha());
+            var token = new UsernamePasswordAuthenticationToken(autenticacao.email(), autenticacao.senha());
             //O método authenticate do AuthenticationManager tenta autenticar o usuário com base no token fornecido
             var authentication = authenticatorManager.authenticate(token);
 
