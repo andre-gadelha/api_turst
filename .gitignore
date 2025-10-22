@@ -34,3 +34,6 @@ build/
 
 ### APP PROPERTIES ###
 application.properties
+
+### DOCKER ###
+docker-compose.yml
