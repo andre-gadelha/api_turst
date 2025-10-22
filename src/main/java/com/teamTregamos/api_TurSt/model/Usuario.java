@@ -1,5 +1,6 @@
 package com.teamTregamos.api_TurSt.model;
 
+import com.teamTregamos.api_TurSt.dto.DadosCadastroUsuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -35,10 +36,18 @@ public class Usuario implements UserDetails {
         );
     }
 
+    //Construtor padrão
     public Usuario() {
-        // Construtor padrão exigido pelo Hibernate
+        // Construtor JPA padrão exigido pelo Hibernate
     }
 
+    //Construtor para criar um usuário a partir do DTO dos dados de cadastro
+    public Usuario(DadosCadastroUsuario dadosUsuario, String senhaCodificada) {
+        this.nome = dadosUsuario.nome();
+        this.cpfCnpj = dadosUsuario.cpfCnpj();
+        this.email = dadosUsuario.email();
+        this.senha = senhaCodificada;
+    }
 
     @Override
     public String getPassword() {

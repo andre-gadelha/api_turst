@@ -2,6 +2,7 @@ package com.teamTregamos.api_TurSt.controller;
 
 import com.teamTregamos.api_TurSt.dto.DadosCadastroUsuario;
 import com.teamTregamos.api_TurSt.repository.UsuarioRepository;
+import com.teamTregamos.api_TurSt.service.UsuarioService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -17,11 +18,17 @@ public class UsuarioController {
     @Autowired
     private UsuarioRepository repository;
 
+    @Autowired
+    private UsuarioService serviceUsuario;
+
     @PostMapping
     @Transactional
     public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroUsuario requestUsuario){
 
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        //Salva o novo usuário no banco de dados
+        serviceUsuario.cadastrarUsuario(requestUsuario);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body("Usuário "+ requestUsuario.nome() + " cadastrado com sucesso!");
     }
 
     @GetMapping
