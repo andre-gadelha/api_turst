@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.*;
 public class UsuarioController {
 
     @Autowired
-    private UsuarioRepository repository;
-
-    @Autowired
     private UsuarioService serviceUsuario;
 
     @PostMapping
@@ -31,10 +28,11 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.CREATED).body("Usuário "+ requestUsuario.nome() + " cadastrado com sucesso!");
     }
 
+
     @GetMapping
-    @SecurityRequirement(name = "bearer-key")
+    /*@SecurityRequirement(name = "bearer-key")*/
     public ResponseEntity listar(){
 
-        return ResponseEntity.ok("Listagem de usuários");
+        return ResponseEntity.ok(serviceUsuario.listarUsuarios());
     }
 }

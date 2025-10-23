@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UsuarioService {
 
@@ -29,4 +31,10 @@ public class UsuarioService {
 
         return usuarioRepository.save(new Usuario(dadosUsuario, senhaCodificada));
     }
+
+    public List<Usuario> listarUsuarios(){
+
+        return usuarioRepository.findAll();
+    }
+
 }
