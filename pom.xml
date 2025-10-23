@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.teamTregamos</groupId>
-	<artifactId>api-turst</artifactId>
+	<artifactId>Api-Turst</artifactId>
 	<version>0.0.1</version>
 	<name>api-turst</name>
 	<description>Project for Spring Boot para Back End para sistema de Tutismo Sustentável</description>
@@ -90,6 +90,12 @@
 	</dependencies>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -123,9 +129,13 @@
 							<goal>repackage</goal>
 						</goals>
 					</execution>
+					<execution>
+						<goals>
+							<goal>build-info</goal>
+						</goals>
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
